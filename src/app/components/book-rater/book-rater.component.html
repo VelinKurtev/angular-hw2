@@ -1,1 +1,28 @@
-<p>book-rater works!</p>
+<mat-card>
+  <mat-card-content>
+    <div class="book-info">
+      <div class="info">
+        <p>{{name}}</p>
+        <mat-form-field>
+          <mat-label>name</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div class="info">
+        <p>{{description}}</p>
+        <mat-form-field>
+          <mat-label>description</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div class="info">
+        <p>{{author}}</p>
+        <mat-form-field>
+          <mat-label>author</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </div>
+    <app-rating-bar></app-rating-bar>
+  </mat-card-content>
+</mat-card>

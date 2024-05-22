@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
+import { BookRaterComponent } from './components/book-rater/book-rater.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatCardModule],
+  imports: [RouterOutlet, BookRaterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
