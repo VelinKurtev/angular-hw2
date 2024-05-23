@@ -3,26 +3,27 @@
     <div class="book-info">
       <div class="info">
         <p>{{name}}</p>
-        <mat-form-field>
+        <mat-form-field *ngIf="rated">
           <mat-label>name</mat-label>
           <input matInput>
         </mat-form-field>
       </div>
       <div class="info">
         <p>{{description}}</p>
-        <mat-form-field>
+        <mat-form-field *ngIf="rated">
           <mat-label>description</mat-label>
           <input matInput>
         </mat-form-field>
       </div>
       <div class="info">
         <p>{{author}}</p>
-        <mat-form-field>
+        <mat-form-field *ngIf="rated">
           <mat-label>author</mat-label>
           <input matInput>
         </mat-form-field>
       </div>
     </div>
-    <app-rating-bar></app-rating-bar>
+    <p *ngIf="rating !== 0">CurrentRating => <span>{{rating}}</span></p>
+    <app-rating-bar [rating]="rating" (ratingUpdated)="onRatingChanged($event)"></app-rating-bar>
   </mat-card-content>
 </mat-card>

@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { RatingBarComponent } from '../rating-bar/rating-bar.component';
 import { Book, DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { StarRatingModule } from 'angular-star-rating';
 
 @Component({
   selector: 'app-book-rater',
   standalone: true,
-  imports: [MatCardModule, RatingBarComponent, MatInputModule, FormsModule, MatFormFieldModule],
+  imports: [MatCardModule, RatingBarComponent, MatInputModule, FormsModule, MatFormFieldModule, CommonModule, StarRatingModule],
   templateUrl: './book-rater.component.html',
   styleUrl: './book-rater.component.css'
 })
@@ -19,6 +21,8 @@ export class BookRaterComponent {
   name:string;
   description:string;
   author:string;
+  rated:boolean = !false;
+  rating:number = 0;
 
   books!: Book[];
   private booksSubscription: Subscription;
@@ -37,5 +41,9 @@ export class BookRaterComponent {
     if (this.booksSubscription) {
       this.booksSubscription.unsubscribe();
     }
+  }
+
+  onRatingChanged(rating: number) {
+    this.rating = rating;
   }
 }
