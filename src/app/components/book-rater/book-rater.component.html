@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-content>
+  <mat-card-content *ngIf="bookIndex < books.length; else resetScreen" >
     <div class="book-info">
       <div class="info">
         <p>{{name}}</p>
@@ -29,4 +29,14 @@
       <mat-icon>arrow_right</mat-icon>
     </button>
   </mat-card-content>
+  <ng-template #resetScreen>
+    <div class="reset-screen" >
+      <h1 *ngIf="!done">You've rated all the books successfully</h1>
+      <h1 *ngIf="done">Thank you for your rating</h1>
+      <div class="buttons" *ngIf="!done">
+        <button mat-flat-button color="primary" (click)="nextBook(true)">I want to rate them again</button>
+        <button mat-flat-button color="primary" (click)="done = true">No. I'm done.</button>
+      </div>
+    </div>
+  </ng-template>
 </mat-card>

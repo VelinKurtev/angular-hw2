@@ -31,6 +31,7 @@ export class BookRaterComponent {
   avgRating: number[] = [];
   totalRating!: number[];
   bookIndex = 0;
+  done: boolean = false;
 
   books!: Book[];
   private booksSubscription: Subscription;
@@ -58,12 +59,18 @@ export class BookRaterComponent {
     this.avgRating[this.bookIndex] = rating;
   }
 
-  nextBook() {
+  nextBook(reset?: boolean) {
     this.rating = 0;
     this.rated = false;
+    if (reset) {
+      this.bookIndex = -1;
+      this.avgRating = [];
+    }
+    this.books[this.bookIndex] = { name: this.editableName, description: this.editableDescription, author: this.editableAuthor } as Book;
     this.bookIndex += 1;
-    this.loadNextBook(this.bookIndex);
-    this.dataService.updateBook(this.bookIndex - 1, { name: this.editableName, description: this.editableDescription, author: this.editableAuthor } as Book)
+    if (this.bookIndex < this.books.length) {
+      this.loadNextBook(this.bookIndex);
+    }
   }
 
   private loadNextBook(index: number) {
@@ -72,7 +79,7 @@ export class BookRaterComponent {
     this.author = this.books[index].author;
   }
 
-  calculateAverage(arr:number[]) {
+  calculateAverage(arr: number[]) {
     const sum = arr.reduce((acc, val) => acc + val, 0);
     return arr.length ? sum / arr.length : 0;
   }

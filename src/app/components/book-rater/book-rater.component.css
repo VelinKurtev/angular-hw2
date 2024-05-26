@@ -3,7 +3,7 @@ mat-card {
  height: 800px;
 }
 
-mat-card-content{
+mat-card-content, .reset-screen {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -43,4 +43,10 @@ p {
     align-items: center;
     justify-content: center;
     color: cornflowerblue;
+}
+
+.buttons{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
 }
