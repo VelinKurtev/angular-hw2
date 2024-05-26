@@ -4,26 +4,29 @@
       <div class="info">
         <p>{{name}}</p>
         <mat-form-field *ngIf="rated">
-          <mat-label>name</mat-label>
-          <input matInput>
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="editableName">
         </mat-form-field>
       </div>
       <div class="info">
-        <p>{{description}}</p>
+        <p class="description">{{description}}</p>
         <mat-form-field *ngIf="rated">
-          <mat-label>description</mat-label>
-          <input matInput>
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="editableDescription">
         </mat-form-field>
       </div>
       <div class="info">
         <p>{{author}}</p>
         <mat-form-field *ngIf="rated">
-          <mat-label>author</mat-label>
-          <input matInput>
+          <mat-label>Author</mat-label>
+          <input matInput [(ngModel)]="editableAuthor">
         </mat-form-field>
       </div>
     </div>
-    <p *ngIf="rating !== 0">CurrentRating => <span>{{rating}}</span></p>
+    <h1 *ngIf="avgRating.length !== 0">Current Rating : <span>{{calculateAverage(avgRating) | number:'1.2-2'}}</span></h1>
     <app-rating-bar [rating]="rating" (ratingUpdated)="onRatingChanged($event)"></app-rating-bar>
+    <button [id]="'next'" mat-icon-button id="next" *ngIf="rated" (click)="nextBook()">
+      <mat-icon>arrow_right</mat-icon>
+    </button>
   </mat-card-content>
 </mat-card>

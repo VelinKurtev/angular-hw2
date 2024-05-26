@@ -1,0 +1,11 @@
+button {
+    width: 52px;
+    height: 52px;
+}
+
+mat-icon {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
